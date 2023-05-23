@@ -1,0 +1,21 @@
+.mm-button {
+    cursor: pointer;
+    border-radius: 20px;
+    
+}
+
+.mm-section {
+  margin: auto;
+  width: 50%;
+  border: 0px solid;
+  padding: 60px;
+  margin-bottom: 5px;
+}
+
+body{
+    background: #222;
+    font-family: system-ui;
+    display: grid;
+    place-content: center;
+    min-height: 100vh;
+}

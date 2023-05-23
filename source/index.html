@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./style.css">
+  <title>Lab09</title>
+</head>
+<body>
+  <section class="mm-section">
+    <form id="formulario">
+      <label for="fecha">
+        <input type="text" id="fecha" name="fecha" required placeholder="Fecha">
+      </label><br>
+      <label for="email">
+        <input type="email" id="email" name="email" required placeholder="Email">
+      </label><br>
+      <button class="mm-button" type="submit">Enviar</button>
+    </form>
+  </section>
+
+  <script>
+    document.getElementById('formulario').addEventListener('submit', function(event) {
+      event.preventDefault();
+      const fecha = document.getElementById('fecha').value;
+      const email = document.getElementById('email').value;
+
+      const errores = [];
+
+      // Validar campos obligatorios
+      if (!fecha) {
+        errores.push('El campo Fecha es obligatorio.');
+      }
+
+      if (!email) {
+        errores.push('El campo Email es obligatorio.');
+      }
+
+      // Validar formato de fecha
+      const regexFecha = /^\d{4}-\d{2}-\d{2}$/;
+      if (fecha && !regexFecha.test(fecha)) {
+        errores.push('El formato de la fecha no es válido.');
+      }
+
+      // Validar formato de email
+      const regexEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (email && !regexEmail.test(email)) {
+        errores.push('El formato del email no es válido.');
+      }
+
+      // Mostrar resultados
+      if (errores.length === 0) {
+        alert('El formulario es válido. ¡Enviado con éxito!');
+        document.getElementById('formulario').reset();
+      } else {
+        alert('Se encontraron los siguientes errores:\n' + errores.join('\n'));
+      }
+    });
+  </script>
+    <script src="/source/app.js"></script>
+</body>
+</html>
